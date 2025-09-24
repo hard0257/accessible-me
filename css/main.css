@@ -1,10 +1,12 @@
 body {
   font-family: 'Roboto', Helvetica, sans-serif;
   background-color: grey;
+  color: #000000;/* solid body text on grey and also dark text so it reads well. */
   margin: 0;
   padding: 0;
 }
 
+/* headings use the display font from Google Fonts */
 h1,
 h2,
 h3,
@@ -14,16 +16,19 @@ h6 {
   font-family: 'Stick No Bills', 'Roboto', Helvetica, sans-serif;
 }
 
-.container {
+.container {                   /* page wrapper width + side padding */
   max-width: 1080px;
   margin: 0 auto;
   padding: 0 1rem;
 }
 
+/* images scale with the layout */
 img {
   width: 100%;
 }
 
+/* Navigation */
+/* list reset + row layout */
 .main-nav ul {
   list-style: none;
   display: flex;
@@ -39,10 +44,15 @@ img {
 
 .main-nav ul li a {
   display: block;
-  color: inherit;
+  color:  #0f172a;
   text-decoration: none;
   font-size: 1.25rem;
-}
+}                              
+
+.main-nav ul li a:hover,
+.main-nav ul li a:focus { text-decoration: underline; }
+.main-nav ul li a:visited { color: #0f172a; } /* avoid purple colour visited on grey */
+
 
 form input,
 form textarea {
@@ -52,6 +62,7 @@ form textarea {
   padding: .5rem 1rem;
 }
 
+/* fixed textarea height so the layout stays tidy */
 form textarea {
   min-height: 150px;
   max-height: 150px;
@@ -59,13 +70,45 @@ form textarea {
   resize: none;
 }
 
+/* high-contrast button (light on dark) */
 form button {
-  background: none;
-  border: 2px solid black;
+  background: #1f2937;            /* dark */
+  color: #ffffff;                 /* light text */
+  border: 2px solid #1f2937;
   padding: 1rem;
   text-transform: uppercase;
 }
 
+/* footer spacing */
 .site-footer {
   padding: 2rem 0;
 }
+
+/* placeholders darker so they are readable */
+::placeholder { color: #1b1a1a; opacity: 1; }
+
+/* skip link: hidden until focused */
+.skip-link{
+  position: absolute;            /* or can say keep it off-screen until keyboard focus */
+  left: -9999px;
+  top: 0;
+  padding: 0.5rem 1rem;
+  background: #bab7b7;
+  border: 2px solid #181818;
+  z-index: 1000;
+}
+
+/* show the skip link when Tab reaches it */
+.skip-link:focus{ left: .5rem; top: .5rem; }
+
+/* clear focus ring so keyboard users see where they are */
+:focus{
+   outline: 3px /* the ring color and size */
+  solid #131314; 
+  outline-offset: 2px; }  /* a little gap so it is easy to see */
+
+  /* content links (email/phone/etc.) kept dark for contrast */
+a { color: #0f172a; }          
+a:visited { color: #0f172a; } 
+a:hover,
+a:focus { text-decoration: underline; }
